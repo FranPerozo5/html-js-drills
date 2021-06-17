@@ -22,11 +22,20 @@ function addName() {
   // - https://www.w3schools.com/jsref/prop_node_innertext.asp
 
   let nameElement = document.querySelector('#name');
-  nameElement.innerText = 'See script.js!';
+  nameElement.innerText = 'Francisco';
 }
 
 function addFavoriteThings() {
   console.log('Called addFavoriteThings()');
+  let favoriteThings = document.querySelector('#favthings');
+  console.log(favoriteThings);
+  favoriteThings.innerHTML=`
+  <li>Swiming</li>
+  <li>Reading</li>
+  <li>Watching movies</li>
+  <li>Sleeping</li>`;
+  document.body.appendChild('#favthings')
+  
 
   // 1. Get a reference to <ul id="favthings">
   // 2. Create a few list items representing your favorite things
@@ -40,6 +49,9 @@ function addFavoriteThings() {
 
 function replaceImage() {
   console.log('Called replaceImage()');
+  let image = document.querySelector('#picture');
+  console.log(image);
+  image.setAttribute("src",""); MIN30
 
   // Change the puppy picture to a picture of your choosing
 
