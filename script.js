@@ -74,9 +74,11 @@ function changeCodeStatus() {
 // Get a reference to the button w/ id="show-info-button"
 let showInfoButton = document.querySelector('#show-info-button');
 
+
 // Do something when showInfoButton is clicke
 showInfoButton.addEventListener('click', function() {
   console.log('Clicked "Show Info" button');
+} 
 
   // Implement addName, addFavoriteThings, replaceImage, changeCodeStatus above
 
