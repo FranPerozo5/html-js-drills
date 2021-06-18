@@ -34,7 +34,7 @@ function addFavoriteThings() {
   <li>Reading</li>
   <li>Watching movies</li>
   <li>Sleeping</li>`;
-  document.body.appendChild('#favthings')
+  
   
 
   // 1. Get a reference to <ul id="favthings">
@@ -48,11 +48,10 @@ function addFavoriteThings() {
 }
 
 function replaceImage() {
-  console.log('Called replaceImage()');
-  let image = document.querySelector('#picture');
+  let image = document.querySelector("#picture");
   console.log(image);
-  image.setAttribute("src",""); MIN30
-
+  image.setAttribute("src","pic.jpg");
+  
   // Change the puppy picture to a picture of your choosing
 
   // See:
@@ -62,6 +61,10 @@ function replaceImage() {
 
 function changeCodeStatus() {
   console.log('Called changeCodeStatus()');
+  let codeStatus = document.getElementById("codestatus");
+  let newImg = document.createElement('img');
+  newImg.setAttribute("src","giphy.gif");
+    codeStatus.appendChild(newImg);
 
   // 1. Get a reference to <div id="codestatus">
   // 2. Create image element containing a sweet ol' meme
