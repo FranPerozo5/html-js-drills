@@ -34,8 +34,8 @@ function addFavoriteThings() {
   <li>Reading</li>
   <li>Watching movies</li>
   <li>Sleeping</li>`;
-  
-  
+
+
 
   // 1. Get a reference to <ul id="favthings">
   // 2. Create a few list items representing your favorite things
@@ -51,7 +51,7 @@ function replaceImage() {
   let image = document.querySelector("#picture");
   console.log(image);
   image.setAttribute("src","pic.jpg");
-  
+
   // Change the puppy picture to a picture of your choosing
 
   // See:
@@ -78,7 +78,6 @@ let showInfoButton = document.querySelector('#show-info-button');
 // Do something when showInfoButton is clicke
 showInfoButton.addEventListener('click', function() {
   console.log('Clicked "Show Info" button');
-} 
 
   // Implement addName, addFavoriteThings, replaceImage, changeCodeStatus above
 
@@ -104,8 +103,37 @@ let informationForm = document.querySelector('#information-form');
 // Do something when form is submitted
 informationForm.addEventListener('submit', function(event) {
   event.preventDefault(); // You will want this here. Remove it and see what changes.
+//checkIds in HTML
+  console.log(event.target);
+  const formData = new FormData(event.target);
+  console.log(formData);
+  const formProps = Object.fromEntries (formData);
+  console.log(formProps);
 
+  document.getElementById("firstname").innerHTML=formProps.fname;
+  document.getElementById("lastname").innerHTML=formProps.lname;
+  document.getElementById("chosencar").innerHTML=formProps.cars;
+  document.getElementById("icecreamstatus").innerHTML=formProps.icecream;
   console.log('Form submitted');
+
+  let humancheck = document.querySelector("#humancheck").checked;
+  let codercheck = document.querySelector("#codercheck").checked;
+
+  if(humancheck){
+    let div = document.createElement('div');
+    div.innerText= "This person is a human";
+    document.querySelector("#checks").appendChild(div);
+  }
+  if(codercheck){
+    let div = document.createElement('div');
+    div.innerText= "This person is a coder";
+    document.querySelector("#checks").appendChild(div);
+  }
+
+  //This replaces the content:
+  //document.querySelector("#checks").innerHTML= <div>${humancheck}</div> <div>${codercheck}</div>;
+  console.log(humancheck,codercheck);
+
 
   // Your job:
   //   1. Get information typed into the form
@@ -128,15 +156,17 @@ informationForm.addEventListener('submit', function(event) {
 // then log something to the console
 
 // Fill in ________ to get a reference to the correct button on the page
-let consoleLogButton = document.querySelector('#________');
+let consoleLogButton = document.querySelector('#console-log-button');
 
 // Log something when that button is clicked
 consoleLogButton.addEventListener('click', function() {
   console.log('Change this text if you want!');
 });
 
-let makeBlueButton = document.querySelector('#________');
+let makeBlueButton = document.querySelector('#make-blue-button');
 makeBlueButton.addEventListener('click', function() {
+  let colorText = document.querySelector("#colorText");
+  colorText.style.color = "blue";
   // Your job:
   //  1. When a user clicks "Change the text to the right blue"
   //  2. Change the text in <div id="colorText">...</div> to blue
@@ -144,7 +174,11 @@ makeBlueButton.addEventListener('click', function() {
 
 // Adding an event listener to document means the "keydown" event
 // can happen anywhere on the page and we'll respond.
-document.addeventListener('keydown', function() {
+document.addEventListener('keydown', function(event) {
+  console.log(event.code);
+  if(event.code=="KeyR"){
+    document.querySelector("#colorText").style.color="red";
+  }
   // This is called whenever a user pressed any key.
 
   // Your job:
@@ -170,7 +204,17 @@ document.addeventListener('keydown', function() {
  *   Add a delete button next to each item and allow it to delete the item
  *   it is next to.
  */
-
+ let toDoListForm = document.querySelector('form');
+ toDoListForm.addEventListener('submit', function (event) {
+   event.preventDefault();
+   let ToDoItem = document.querySelector("#todo").value;
+   console.log(toDoItem);
+   let ul = document.querySelector('#todos');
+   let li = document.createElement('li');
+   li.innerText=toDoItem;
+   ul.appendChild(li);
+});
+//My code is not preventing Default :(
 // Your code goes here
 
 /****************************************
@@ -189,7 +233,19 @@ document.addeventListener('keydown', function() {
  *   - https://javascript.info/settimeout-setinterval
  *
  */
+let secondsDiv = document.querySelector("#seconds");
+let counter =0;
+let timerId = setInterval(()=>{
+ counter++;
+ secondsDiv.innerHTML=counter;
+},1000);
 
+let displayDiv = document.querySelector("#delayedDisplay");
+
+setTimeout(()=>{
+  displayDiv.innerHTML="5 SECONDS JUST PASSED";
+  clearInterval(timerId);
+}, 5000)
 // Your code goes here
 
 /****************************************
